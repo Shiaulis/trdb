@@ -66,15 +66,15 @@ TPL has 9 divisions with different player counts per match:
 - Verify approach and suggest corrections
 - Explain concepts as needed
 
-## Next Steps
-1. ✅ Technology stack decided: Python + SQLite
-2. Set up Python development environment
-3. Initialize project structure
-4. Design database schema
-5. Implement core validation logic
-6. Build CLI interface
-7. Future: Discord bot integration
+## Development Strategy
+**Incremental, iteration-based approach** - Build understanding before adding complexity.
+
+See `DEVELOPMENT_PLAN.md` for detailed iteration breakdown.
 
 ## Current Status
-- Environment: Neovim (needs Python configuration)
-- Starting from scratch with Python
+- ✅ Project structure initialized
+- ✅ Git version control set up
+- ✅ Dependencies identified (typer, rich)
+- ✅ Spreadsheet data analyzed (66 sheets, ~5,753 players)
+- 🔄 **Current**: Iteration 1 - Single ID validation
+- Environment: Python 3.13, Neovim, macOS
