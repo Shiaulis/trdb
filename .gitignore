@@ -12,3 +12,7 @@ env/
 
 # OS
 .DS_Store
+
+# Data files (sensitive player information)
+docs/*.xlsx
+docs/*.xls
