@@ -28,3 +28,9 @@ def test_validate_player_id_with_invalid_characters():
     """Should return False when player_id contains invalid characters."""
     almost_valid_string = "d33fe4ac81338c97290d2acd810c15e!"
     assert validate_player_id(almost_valid_string) is False
+
+
+def test_validate_player_id_with_non_hexadecimal_characters():
+    """Should return False when player_id contains characters outside of hexadecimal range."""
+    almost_valid_string = "c327bfd7c2c58f2485e58903df38s473"
+    assert validate_player_id(almost_valid_string) is False
