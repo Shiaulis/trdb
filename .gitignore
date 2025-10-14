@@ -1,14 +1,15 @@
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.egg-info/
-dist/
-build/
+*.py[cod]
 
 # Virtual environment
 venv/
 env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
 
 # OS
 .DS_Store
