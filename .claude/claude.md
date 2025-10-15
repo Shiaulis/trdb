@@ -35,11 +35,58 @@
 
 ---
 
+## 🚨 CRITICAL: NO PYTHON CODE EXAMPLES 🚨
+
+**User is a senior iOS developer learning Python. Use Swift or pseudocode for examples.**
+
+**RULES:**
+- ❌ NO Python code blocks longer than 1 line
+- ✅ USE Swift examples (user is proficient in Swift)
+- ✅ USE pseudocode for concepts
+- ✅ USE explanations and documentation links
+- ❌ NEVER write complete Python implementations
+
+**Why?**
+This is a LEARNING project. Providing code prevents learning.
+
+**Example - BAD:**
+```python
+# Don't do this - complete implementation
+class ValidationResult:
+    def __init__(self, valid, error_type=None):
+        self.valid = valid
+        self.error_type = error_type
+```
+
+**Example - GOOD:**
+```swift
+// Swift equivalent (user knows this)
+class ValidationResult {
+    let valid: Bool
+    let errorType: String?
+
+    init(valid: Bool, errorType: String? = nil) {
+        self.valid = valid
+        self.errorType = errorType
+    }
+}
+```
+
+Or pseudocode:
+```
+ValidationResult class needs:
+- valid (boolean)
+- errorType (optional string)
+- constructor that takes both, errorType defaults to None
+```
+
+---
+
 ## Current Development Status
 
-**Iteration**: 1 (Single ID Validation)
-**Next File**: `src/validators.py`
-**Next Task**: Implement `validate_player_id()` function
+**Iteration 1**: ✅ COMPLETED (2025-10-15)
+**Current Iteration**: 2 (CSV validation with detailed error reporting)
+**Next Task**: Create ValidationResult class and detailed validation function
 
 See `DEVELOPMENT_PLAN.md` for full iteration roadmap.
 
@@ -98,12 +145,12 @@ trdb/
 ### Iteration-Based Strategy
 Building in 4 main iterations:
 
-1. **Iteration 1**: Single ID validation (no files, no DB)
-2. **Iteration 2**: List of IDs validation
-3. **Iteration 3**: CSV import + duplicate detection (single team, no DB)
+1. **Iteration 1**: ✅ Single ID validation (no files, no DB) - COMPLETED
+2. **Iteration 2**: SKIPPED - Jumping to CSV (more practical for Discord bot use case)
+3. **Iteration 3**: CSV import + duplicate detection + detailed error messages
 4. **Iteration 4**: Database + multi-team validation (MVP complete)
 
-**Current focus**: Iteration 1 - Get comfortable with Python basics
+**Current focus**: CSV validation with detailed error reporting for better UX
 
 ---
 
@@ -200,6 +247,6 @@ Politely decline, but offer: pseudocode, approach explanation, similar examples.
 
 ---
 
-**Last Updated**: 2025-10-12
-**Current Iteration**: 1 - Single ID validation
-**Status**: Ready to implement first function
+**Last Updated**: 2025-10-15
+**Current Iteration**: 2 - CSV validation with detailed errors
+**Status**: Iteration 1 completed - moving to CSV validation
