@@ -23,26 +23,33 @@ Build incrementally. Understand each piece before adding complexity. This is a *
 
 ---
 
-### 🔄 Iteration 1: Validate Single Player ID
+### ✅ Iteration 1: Validate Single Player ID
 **Goal**: Learn string validation and basic Python functions
 
 **Tasks**:
-- [ ] Write `validate_player_id()` function in `src/validators.py`
-- [ ] Handle edge cases (empty, wrong length, invalid characters)
-- [ ] Write basic tests manually (no test framework yet)
+- [x] Write `validate_player_id()` function in `src/validators.py`
+- [x] Handle edge cases (empty, wrong length, invalid characters)
+- [x] Write tests with pytest (6 comprehensive tests)
+- [x] Implement CLI with Typer and Rich
+- [x] Add proper hex validation using int(player_id, 16)
+- [x] Add documentation and docstrings
 
 **What You'll Learn**:
 - String operations in Python
 - Boolean logic
 - Function definitions and docstrings
-- Regex (optional, for hex validation)
+- Try/except error handling
+- Testing with pytest
+- CLI with Typer
+- Colored output with Rich
 
 **Validation Rules**:
 - Player ID must be exactly 32 characters
 - Must contain only hexadecimal characters (0-9, a-f)
 - Lowercase format (based on real data)
 
-**Success Criteria**: Function correctly identifies valid/invalid player IDs
+**Success Criteria**: ✅ Function correctly identifies valid/invalid player IDs
+**Completed**: 2025-10-15
 
 ---
 
@@ -228,6 +235,6 @@ CREATE TABLE players (
 
 ---
 
-**Last Updated**: 2025-10-12
-**Current Iteration**: 1
-**Next Milestone**: Single ID validation function
+**Last Updated**: 2025-10-15
+**Current Iteration**: 2 (Planning CSV validation - skipping list iteration)
+**Next Milestone**: CSV file validation with detailed error reporting
