@@ -1,17 +1,15 @@
+from pathlib import Path
 import typer
 from rich import print
-from src.validators import validate_player_id
+from src.reader import read
 
 
-def main(player_id: str):
-    """Validate a player ID."""
+def main(path: Path):
+    """Validate a CSV list of player identifiers."""
 
-    if validate_player_id(player_id):
-        print("[green]✓ Valid player identifier[/green]")
-        raise typer.Exit(code=0)
-    else:
-        print("[red]✗ Invalid player identifier[/red]")
-        raise typer.Exit(code=1)
+    players = read(path)
+    for player in players:
+        player.print()
 
 
 if __name__ == "__main__":
