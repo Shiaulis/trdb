@@ -1,13 +1,12 @@
 from pathlib import Path
 import typer
-from rich import print
-from src.reader import read
+from src.roster_reader import read_players
 
 
-def main(path: Path):
+def main(roster_path: Path):
     """Validate a CSV list of player identifiers."""
 
-    players = read(path)
+    players = read_players(roster_path)
     for player in players:
         player.print()
 

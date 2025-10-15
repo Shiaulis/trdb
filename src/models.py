@@ -13,6 +13,6 @@ class Player:
         text = Text()
         text.append("Player: ", style="bold cyan")
         text.append(self.player_name)
-        text.append("ID: ", style="dim")
+        text.append(" | ID: ", style="dim")
         text.append(self.player_id)
         print(text)
