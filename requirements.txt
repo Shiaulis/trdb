@@ -1,10 +1,21 @@
+aiohappyeyeballs==2.6.1
+aiohttp==3.13.0
+aiosignal==1.4.0
+attrs==25.4.0
+audioop-lts==0.2.2
 click==8.3.0
 coverage==7.10.7
+discord==2.3.2
+discord.py==2.6.4
+frozenlist==1.8.0
+idna==3.11
 iniconfig==2.1.0
 markdown-it-py==4.0.0
 mdurl==0.1.2
+multidict==6.7.0
 packaging==25.0
 pluggy==1.6.0
+propcache==0.4.1
 Pygments==2.19.2
 pytest==8.4.2
 pytest-cov==7.0.0
@@ -12,3 +23,4 @@ rich==14.2.0
 shellingham==1.5.4
 typer==0.19.2
 typing_extensions==4.15.0
+yarl==1.22.0
