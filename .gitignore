@@ -3,8 +3,7 @@ __pycache__/
 *.py[cod]
 
 # Virtual environment
-venv/
-env/
+.venv/
 
 # Testing
 .pytest_cache/
