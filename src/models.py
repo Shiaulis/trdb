@@ -1,7 +1,3 @@
-from rich import print
-from rich.text import Text
-
-
 class Player:
     """ Represents a player with their properties."""
 
@@ -9,10 +5,18 @@ class Player:
         self.player_name = player_name
         self.player_id = player_id
 
-    def print(self):
-        text = Text()
-        text.append("Player: ", style="bold cyan")
-        text.append(self.player_name)
-        text.append(" | ID: ", style="dim")
-        text.append(self.player_id)
-        print(text)
+
+class ValidationReport:
+    """Represents result of player list validation"""
+
+    def __init__(self, total_count: int, invalid_players: list[Player]):
+        self.total_count = total_count
+        self.invalid_players = invalid_players
+
+    @property
+    def invalid_count(self) -> int:
+        return len(self.invalid_players)
+
+    @property
+    def valid_count(self) -> int:
+        return self.total_count - self.invalid_count

@@ -1,7 +1,28 @@
+from src.models import Player
+from src.models import ValidationReport
+
+
 VALID_PLAYER_ID_LENGTH = 32
 
 
-def validate_player_id(player_id):
+def validate_players(players: list[Player]) -> ValidationReport:
+    """
+    Validate a list of players with validation report as a return value.
+    """
+    invalid_players: list[Player] = []
+    for player in players:
+        is_valid = validate_player_id(player.player_id)
+
+        if not is_valid:
+            invalid_players.append(player)
+
+    return ValidationReport(
+        len(players),
+        invalid_players
+    )
+
+
+def validate_player_id(player_id: str) -> bool:
     """
     Validate a player ID for TPL roster database.
 

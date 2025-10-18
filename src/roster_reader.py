@@ -6,7 +6,7 @@ PLAYER_NAME_COLUMN = "player_name"
 PLAYER_ID_COLUMN = "player_id"
 
 
-def read_players(path: Path) -> list:
+def read_players(path: Path) -> list[Player]:
     players = []
     with path.open() as csvfile:
         reader = csv.DictReader(csvfile)
