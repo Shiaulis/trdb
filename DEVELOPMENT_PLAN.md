@@ -53,31 +53,43 @@ Build incrementally. Understand each piece before adding complexity. This is a *
 
 ---
 
-### Iteration 2: Validate List of IDs
-**Goal**: Work with collections and aggregation
+### ✅ Iteration 2: CSV Validation with ValidationReport
+**Goal**: CSV parsing, data models, and validation reporting
 
 **Tasks**:
-- [ ] Write `validate_player_ids()` function
-- [ ] Return a validation report (dict with counts)
-- [ ] Handle empty lists, None values
+- [x] Create `Player` model class
+- [x] Create `ValidationReport` model class with computed properties
+- [x] Write `validate_players()` function
+- [x] Implement `read_players()` CSV reader
+- [x] Store invalid players (not just IDs) for better error reporting
+- [ ] Create formatters for CLI output (Rich)
+- [ ] Create formatters for Discord output (future)
 
 **What You'll Learn**:
-- Lists and iteration
-- Dictionaries for structured data
-- List comprehensions (optional)
-- Counting and aggregation
+- Class design in Python
+- Type hints and annotations
+- Computed properties with `@property` decorator
+- CSV file parsing
+- Separation of concerns (models vs. formatters)
 
-**Output Format**:
+**Architecture Decision**:
+Models are UI-agnostic (no `print()` methods). Formatting is handled by separate formatter modules.
+
+**ValidationReport Design**:
 ```python
-{
-    "total": 150,
-    "valid": 148,
-    "invalid": 2,
-    "invalid_ids": ["bad_id_1", "bad_id_2"]
-}
+class ValidationReport:
+    total_count: int
+    invalid_players: list[Player]
+
+    @property
+    def valid_count(self) -> int
+
+    @property
+    def invalid_count(self) -> int
 ```
 
-**Success Criteria**: Can process a list and return accurate counts
+**Success Criteria**: ✅ Can read CSV and generate validation report with full player data
+**Completed**: 2025-10-19 (core models and validation)
 
 ---
 
@@ -178,13 +190,78 @@ CREATE TABLE players (
 - Historical data
 
 ### Iteration 8: Discord Bot Integration
-- discord.py integration
-- Bot commands mirror CLI
-- Role-based permissions
+**Goal**: Add Discord interface using the same core validation logic
+
+**Tasks**:
+- [ ] Create `src/bot/` directory for Discord-specific code
+- [ ] Implement Discord bot with discord.py
+- [ ] Create `bot/formatters.py` for Discord message formatting
+- [ ] Add file upload handling for CSV rosters
+- [ ] Implement bot commands (validate, help)
+- [ ] Deploy bot to server
+
+**Architecture**:
+Reuse `src/core/` validation logic. Only formatting differs between CLI and Discord.
+
+**Note**: Both CLI and Discord bot will be supported as different interfaces to the same validation engine.
 
 ---
 
 ## Key Decisions Log
+
+### Architecture: Layered Structure (2025-10-19)
+**Decision**: Use layered architecture in single repository
+
+**Structure**:
+```
+trdb/
+├── src/
+│   ├── core/          # Business logic (UI-agnostic)
+│   │   ├── models.py
+│   │   ├── validators.py
+│   │   └── database.py
+│   ├── cli/           # CLI interface
+│   │   ├── commands.py
+│   │   └── formatters.py
+│   └── bot/           # Discord interface (future)
+│       ├── discord_bot.py
+│       └── formatters.py
+├── main_cli.py
+└── main_bot.py
+```
+
+**Rationale**:
+- Core validation logic is reusable between CLI and Discord
+- Easy to develop both in same codebase
+- Clean separation of concerns
+- Models are UI-agnostic (no print methods)
+- Each interface has its own formatter
+
+### Dual Interface: CLI + Discord Bot (2025-10-19)
+**Decision**: Support both CLI and Discord bot interfaces
+
+**Why both?**
+- CLI: Perfect for league admins, power users, automation, local testing
+- Discord: Perfect for teams, less technical users, interactive experience
+- Both use the same core validation engine
+- Provides flexibility for different use cases
+
+**Development approach**:
+- Build CLI first (easier to test during development)
+- Add Discord bot later using same core logic
+- Keep both maintained as separate interfaces
+
+### Package Management: pip over Poetry (2025-10-19)
+**Decision**: Migrate from Poetry to pip
+
+**Rationale**:
+- Simpler for learning project
+- Standard Python tooling
+- No version constraints in requirements.txt (always latest)
+- Less tooling overhead
+- Easy to understand for Python beginners
+
+**Trade-off**: Builds aren't reproducible, but acceptable for learning project
 
 ### Why start without database?
 - Easier to test and debug
@@ -235,6 +312,7 @@ CREATE TABLE players (
 
 ---
 
-**Last Updated**: 2025-10-15
-**Current Iteration**: 2 (Planning CSV validation - skipping list iteration)
-**Next Milestone**: CSV file validation with detailed error reporting
+**Last Updated**: 2025-10-19
+**Current Iteration**: 2 (CSV validation with ValidationReport - core models complete)
+**Next Milestone**: Create formatters and test validation with real CSV data
+**Architecture**: Layered structure with support for both CLI and Discord bot interfaces
