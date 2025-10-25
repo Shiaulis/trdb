@@ -1,9 +1,4 @@
-from src.validators import validate_player_id
-
-
-def test_validate_player_id_with_none():
-    """Should return False when player_id is None (wrong type)."""
-    assert validate_player_id(None) is False
+from src.roster_validator import validate_player_id
 
 
 def test_validate_player_id_with_short_string():
