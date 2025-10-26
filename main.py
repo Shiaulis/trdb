@@ -1,19 +1,4 @@
-from pathlib import Path
-import typer
-from src.core.roster_reader import read_players
-from src.core.roster_validator import validate_players
-from src.bot.roster_formatter import format_report
-
-
-def main(roster_path: Path):
-    """Validate a CSV list of player identifiers."""
-
-    players = read_players(roster_path)
-    report = validate_players(players)
-    message = format_report(report)
-
-    print(message)
-
+from src.bot.discord_bot import run
 
 if __name__ == "__main__":
-    typer.run(main)
+    run()

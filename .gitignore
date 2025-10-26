@@ -15,3 +15,6 @@ htmlcov/
 
 # Data files (sensitive player information and test data)
 docs/
+
+# Environmental variables
+.env
