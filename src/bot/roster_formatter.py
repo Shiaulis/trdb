@@ -1,4 +1,4 @@
-from src.models import Player, ValidationReport
+from src.core.models import Player, ValidationReport
 
 
 def format_report(report: ValidationReport) -> str:

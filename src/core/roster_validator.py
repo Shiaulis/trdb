@@ -1,5 +1,5 @@
-from src.models import Player
-from src.models import ValidationReport
+from src.core.models import Player
+from src.core.models import ValidationReport
 
 
 VALID_PLAYER_ID_LENGTH = 32

@@ -1,4 +1,4 @@
-from src.roster_validator import validate_player_id
+from src.core.roster_validator import validate_player_id
 
 
 def test_validate_player_id_with_short_string():

@@ -1,8 +1,8 @@
 import csv
 from pathlib import Path
-from src.roster_reader import read_players
-from src.roster_reader import PLAYER_NAME_COLUMN
-from src.roster_reader import PLAYER_ID_COLUMN
+from src.core.roster_reader import read_players
+from src.core.roster_reader import PLAYER_NAME_COLUMN
+from src.core.roster_reader import PLAYER_ID_COLUMN
 
 
 def test_reader_when_opens_correct_file(tmp_path: Path):

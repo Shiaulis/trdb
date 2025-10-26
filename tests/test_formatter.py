@@ -1,5 +1,5 @@
-from src.roster_formatter import format_report
-from src.models import ValidationReport
+from src.bot.roster_formatter import format_report
+from src.core.models import ValidationReport
 
 
 def test_successfully_formatted_message():

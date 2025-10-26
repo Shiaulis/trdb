@@ -1,8 +1,8 @@
 from pathlib import Path
 import typer
-from src.roster_reader import read_players
-from src.roster_validator import validate_players
-from src.roster_formatter import format_report
+from src.core.roster_reader import read_players
+from src.core.roster_validator import validate_players
+from src.bot.roster_formatter import format_report
 
 
 def main(roster_path: Path):

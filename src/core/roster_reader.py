@@ -1,6 +1,6 @@
 import csv
 from pathlib import Path
-from src.models import Player
+from src.core.models import Player
 
 PLAYER_NAME_COLUMN = "player_name"
 PLAYER_ID_COLUMN = "player_id"
