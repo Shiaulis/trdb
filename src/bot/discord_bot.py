@@ -6,20 +6,21 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 client = discord.Client(intents=intents)
+tree = discord.app_commands.CommandTree(client)
+
+
+@tree.command(
+    name="validate",
+    description="Validate CSV roster file"
+)
+async def validate_command(interaction: discord.Interaction, file: discord.Attachment):
+    await interaction.response.send_message("Hello!")
 
 
 @client.event
 async def on_ready():
+    await tree.sync()
     print(f"We have logged in as {client.user}")
-
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith("$hello"):
-        await message.channel.send("Hello!")
 
 
 def run():
